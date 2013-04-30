@@ -23,32 +23,41 @@ def test_03_days_of_week
 	assert_equal("Su Mo Tu We Th Fr Sa",cal.days_of_week)
 end
 
-def test_04_leapyear
-	cal = Calendar.new(2012)
-	# assert_equal("2012",cal.leap_year)
+def test_04_leapyear_divisible_by_400
+	cal = Calendar.new(2, 2000)
+	assert_equal(true,cal.leap_year?)
 end
-# def test_2_days_of_week
-# 	Wednesday
-# end
 
-# def test_3_years
-# end
+def test_05_leapyear_divisible_by_4
+	cal = Calendar.new(2, 2012)
+	assert_equal(true,cal.leap_year?)
+end
 
-# def test_4_leap_years
-# end
+def test_06_not_leapyear
+	cal = Calendar.new(2, 2013)
+	assert_equal(false,cal.leap_year?)
+end
 
-# def test_5_first_days_of_month
-# end
+def test_07_not_leapyear_by_100
+	cal = Calendar.new(2, 1000)
+	assert_equal(false,cal.leap_year?)
+end
 
-# def test_6_days_in_month
-# end
+def test_08_first_day_of_month
+	cal=Calendar.new(4,2013)
+	assert_equal(2, cal.first_day_of_month)
+end
 
 
 
-   # def test_print_header 
-   #   header = Calendar.new("January")
-   #   assert_equal("January")
-   # end
+
+
+
+
+
+
+
+ 
 
 
 end
