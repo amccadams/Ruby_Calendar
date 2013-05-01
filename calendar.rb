@@ -1,7 +1,9 @@
 
 class Calendar
-# month =ARGV[0]
-# year =ARGV[1]
+month =ARGV[0]
+year =ARGV[1]
+
+puts `cal #{month} #{year}`
 
 attr_reader :month, :year
 
@@ -25,7 +27,6 @@ def month_name
 		"November",
 		"December"
 	]
-
 	month_names[month.to_i-1]
 end
 
@@ -51,10 +52,7 @@ else
  end
 end
 
-
-
-
-def first_day_of_month
+def first_day_of_month #zellers
 	converted_month_values = [14,15,4, 5, 6, 7, 8, 9, 10, 11, 12,13]
 	converted_to_user_inputs = converted_month_values[month.to_i-1]
 	if converted_to_user_inputs == 14 || converted_to_user_inputs == 15 
@@ -62,12 +60,22 @@ def first_day_of_month
 	else 
 		convert_year = year.to_i
 	end
-# return 0/sat, 1/sun, 2/mon.... 6/fri
+# return 0/sat, 1/sun, 2/mon, 3/tue, 4/wed, 5thu, 6/fri
 	start_day = (1 + ((converted_to_user_inputs*26) / 10) +  convert_year +(convert_year / 4) + (6 *(convert_year/100)) + (convert_year / 400) )%7
-
-
 end
 
-
+def days_in_month
+	if month == 2 
+		if leap_year?
+			29
+		else
+			return 28
+  	end
+	elsif month == 1 ||month ==3||month ==5||month ==7||month ==8||month ==10||month ==12
+		return 31
+	else 
+		return 30
+	end
+end
 
  end
