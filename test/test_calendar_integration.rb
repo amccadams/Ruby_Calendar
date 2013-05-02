@@ -80,4 +80,25 @@ cal = Calendar.new(2, 2013)
 assert_equal(28, cal.days_in_month)
 end
 
+# def test_16_year
+# 	cal = Calendar.new(9, 1976)
+# 	assert_equal(1976, cal.year_number)
+# end
+def test_16_array_day_output
+	cal = Calendar.new(9, 1976)
+	assert_equal 
+end
+
+# 	assert_equal(<<-CALENDAR
+#    September 1976
+# Su Mo Tu We Th Fr Sa
+#           1  2  3  4
+#  5  6  7  8  9 10 11
+# 12 13 14 15 16 17 18
+# 19 20 21 22 23 24 25
+# 26 27 28 29 30
+# CALENDAR, cal.print_calendar)
+# end
+
+
 end
