@@ -1,9 +1,9 @@
-
 class Calendar
-month =ARGV[0]
-year =ARGV[1]
+# month =ARGV[0]
+# year =ARGV[1]
 
-puts `cal #{month} #{year}`
+# puts `cal #{month} #{year}`
+
 
 attr_reader :month, :year
 
@@ -12,31 +12,29 @@ def initialize (month, year)
    @year = year
 end
 
+def format_calendar
+    output = month_header
+    output << days_of_week
+    output << array_day_output
+    puts output
+    # output << "\n"
+    # output << "Su Mo Tu We Th Fr Sa\n"
+    # output << formatted_days
+  end
+
 def month_name
-	month_names = [
-		"January",
-		"February",
-		"March",
-		"April",
-		"May",
-		"June",
-		"July",
-		"August",
-		"September",
-		"October",
-		"November",
-		"December"
-	]
+	month_names = %w{Januray Februry March April May June July August September October November December}
+
 	month_names[month.to_i-1]
 end
 
 def month_header
-	"#{month_name} #{year}"
+	"#{month_name} #{year}".center(20).rstrip + "\n"
 end
 
 def days_of_week
 	day_names = 
-		"Su Mo Tu We Th Fr Sa"
+		"Su Mo Tu We Th Fr Sa\n"
 	end
 
 def month_padding
@@ -48,17 +46,30 @@ def month_padding
 end
 
 def array_day_output
-  output_for_cal = []
-	month_padding.times do |i|
-	  output_for_cal << nil
-	end
 	day_array = (1..days_in_month).to_a
-	output_for_cal + day_array
+	day_array.collect! do |num|
+		if num < 10
+			" " + num.to_s
+		else
+			num.to_s
+		end
+	end
+	month_padding.times do
+		day_array.unshift("  ")
+	end
+	final_output = ""
+	until day_array.size == 0
+		
+		week = day_array.shift(7)
+		final_output << week.join(" ") + "\n"
+	end
+	final_output
 end
+
 
 def leap_year?
 	if year % 400 == 0
-  true
+  return true
 elsif year % 100 == 0
    false
 elsif year % 4 == 0
@@ -81,9 +92,9 @@ def first_day_of_month #zellers
 end
 
 def days_in_month
-	if month == 2 
+	if @month == 2 
 		if leap_year?
-			29
+			return 29
 		else
 			return 28
   	end
@@ -94,14 +105,12 @@ def days_in_month
 	end
 end
 
-def print_calendar
-	puts month_header
-	puts days_of_week
-	puts array_day_output
+
+# 	
 
 	# = [ 0],[ 1],[ 2],[ 3],[ 4],[ 5], [ 6],\n [ 7], [ 8],[ 9], [ 10], [11], [12], [13] \n [14], [15], [16], [17], [18], [19], [20],\n [21], [22], [23], [24], [25], [26]
 
 
-end
+# end
 
  end

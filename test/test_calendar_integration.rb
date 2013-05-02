@@ -84,10 +84,10 @@ end
 # 	cal = Calendar.new(9, 1976)
 # 	assert_equal(1976, cal.year_number)
 # end
-def test_16_array_day_output
-	cal = Calendar.new(9, 1976)
-	assert_equal 
-end
+# def test_16_array_day_output
+# 	cal = Calendar.new(9, 1976)
+# 	assert_equal 
+# end
 
 # 	assert_equal(<<-CALENDAR
 #    September 1976
