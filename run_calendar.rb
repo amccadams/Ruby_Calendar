@@ -1,6 +1,6 @@
 require_relative 'calendar'
 
-month = ARGV[0].to_i
+month = ARGV[0]
 year = ARGV[1].to_i
 
 if ARGV.size > 0
